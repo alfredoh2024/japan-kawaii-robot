@@ -15,6 +15,7 @@ export function TripPlanner() {
   const [activeCityId, setActiveCityId] = useState(cityPlans[0].id);
   const [activeDayIndex, setActiveDayIndex] = useState(0);
   const [isFlexibleOpen, setIsFlexibleOpen] = useState(false);
+  const flexibleDays = 2;
 
   const activeCity = useMemo(
     () => cityPlans.find((city) => city.id === activeCityId) ?? cityPlans[0],
@@ -24,6 +25,7 @@ export function TripPlanner() {
   const activeDay = activeCity.days[activeDayIndex] ?? activeCity.days[0];
 
   const totalStops = activeCity.days.reduce((sum, day) => sum + day.stops.length, 0);
+  const totalTripDays = cityPlans.reduce((sum, city) => sum + city.days.length, 0) + flexibleDays;
 
   return (
     <main className="kawaii-shell relative isolate min-h-screen px-4 py-6 sm:px-6 lg:px-10">
@@ -60,7 +62,7 @@ export function TripPlanner() {
 
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               <StatCard label="Ciudades" value="3" tint="bg-[#ffe2ec]" />
-              <StatCard label="Días plan" value="16" tint="bg-[#fff0c9]" />
+              <StatCard label="Días plan" value={String(totalTripDays)} tint="bg-[#fff0c9]" />
               <StatCard label="Noches top" value="3" tint="bg-[#dff7ee]" />
             </div>
           </div>
@@ -222,14 +224,25 @@ export function TripPlanner() {
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#bd5d83]">
                   Noches sugeridas
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-3 grid gap-3">
                   {nightlifeSpots.map((spot) => (
-                    <span
-                      key={spot}
-                      className="rounded-full border border-[#ffc5d7] bg-white px-3 py-2 text-sm font-semibold text-[#834f69]"
+                    <a
+                      key={spot.name}
+                      href={spot.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-[1.2rem] border border-[#ffc5d7] bg-white px-4 py-3 transition hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,133,175,0.14)]"
                     >
-                      {spot}
-                    </span>
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-base font-extrabold text-[#744969]">{spot.name}</p>
+                          <p className="mt-1 text-sm leading-6 text-[#7d637f]">{spot.vibe}</p>
+                        </div>
+                        <span className="shrink-0 rounded-full bg-[#fff0f6] px-3 py-1 text-xs font-semibold text-[#b2557c]">
+                          {spot.label}
+                        </span>
+                      </div>
+                    </a>
                   ))}
                 </div>
               </div>

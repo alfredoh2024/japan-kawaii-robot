@@ -30,6 +30,13 @@ export type CityPlan = {
   days: DayPlan[];
 };
 
+export type NightlifeSpot = {
+  name: string;
+  vibe: string;
+  href: string;
+  label: string;
+};
+
 function commonsImage(filename: string, alt: string, creditUrl?: string, creditLabel = "Wikimedia Commons") {
   const encoded = encodeURIComponent(filename).replace(/%2F/g, "/");
 
@@ -50,35 +57,42 @@ export const cityPlans: CityPlan[] = [
     accent: "from-[#ff8db2] via-[#ffbfd1] to-[#ffe7a8]",
     description:
       "Una entrada llena de luces, castillos, compras y parques temáticos para arrancar el viaje con energía.",
-    stay: "Días 1 al 4",
+    stay: "Días 1 al 3",
     highlights: ["Dotonbori", "USJ", "Umeda Sky", "Katsuoji"],
     days: [
       {
         day: "Día 1",
-        title: "Namba y Dotonbori",
-        vibe: "Luces, templo y primer shot urbano.",
+        title: "Osaka clásico + noche neon",
+        vibe: "Castillo, templo, Katsuoji y cierre urbano entre Shinsekai y Dotonbori.",
         color: "#ff8db2",
         stops: [
           {
-            name: "Castillo de Osaka",
-            slot: "Mañana",
-            image: commonsImage("Osaka Castle - 02.jpg", "Vista del Castillo de Osaka"),
-          },
-          {
-            name: "Templo Namba Yasaka",
-            slot: "Mediodía / tarde",
-            image: commonsImage("Namba Yasaka Shrine 2015.JPG", "Santuario Namba Yasaka en Osaka"),
-          },
-          {
             name: "Shinsekai",
-            slot: "Tarde / atardecer",
+            slot: "Tarde",
+            note: "Antes del cierre nocturno por Dotonbori.",
             image: commonsImage("Shinsekai and Tsutenkaku Tower, Osaka, Japan.jpg", "Calle de Shinsekai con Tsutenkaku"),
           },
           {
             name: "Dotonbori",
             slot: "Noche",
-            note: "Cena, paseo y luces.",
+            note: "Paseo nocturno con luces y cena.",
             image: commonsImage("Dotonbori Area Namba Osaka Japan01s5.jpg", "Canal y neones de Dotonbori"),
+          },
+          {
+            name: "Templo Namba Yasaka",
+            slot: "Durante el día",
+            image: commonsImage("Namba Yasaka Shrine 2015.JPG", "Santuario Namba Yasaka en Osaka"),
+          },
+          {
+            name: "Castillo de Osaka",
+            slot: "Durante el día",
+            image: commonsImage("Osaka Castle - 02.jpg", "Vista del Castillo de Osaka"),
+          },
+          {
+            name: "Templo Katsuoji",
+            slot: "2 horas",
+            note: "Incluye traslados en el cálculo del día.",
+            image: commonsImage("Katsuoji-daruma.jpg", "Darumas en Katsuoji"),
           },
         ],
       },
@@ -107,14 +121,6 @@ export const cityPlans: CityPlan[] = [
             ),
           },
           {
-            name: "Don Quijote",
-            slot: "Tarde / noche",
-            image: commonsImage(
-              "Don Quijote Dotonbori Midosuji store.JPG",
-              "Fachada de Don Quijote en Dotonbori",
-            ),
-          },
-          {
             name: "Umeda Sky Building",
             slot: "Noche",
             note: "Comprar boletos con anticipacion.",
@@ -125,6 +131,14 @@ export const cityPlans: CityPlan[] = [
             slot: "En la visita",
             note: "Resbaladilla transparente dentro del edificio.",
             image: commonsImage("Umeda Sky building 02.jpg", "Escaladores y estructura del Umeda Sky Building"),
+          },
+          {
+            name: "Don Quijote",
+            slot: "Después",
+            image: commonsImage(
+              "Don Quijote Dotonbori Midosuji store.JPG",
+              "Fachada de Don Quijote en Dotonbori",
+            ),
           },
         ],
       },
@@ -141,26 +155,6 @@ export const cityPlans: CityPlan[] = [
           },
         ],
       },
-      {
-        day: "Día 4",
-        title: "Templo fuera de la ciudad",
-        vibe: "Un respiro zen antes de cambiar de ciudad.",
-        color: "#9fe3d3",
-        stops: [
-          {
-            name: "Templo Katsuoji",
-            slot: "Medio día",
-            note: "Considerar 2 horas en el templo más traslados.",
-            image: commonsImage("Katsuoji-daruma.jpg", "Darumas en Katsuoji"),
-          },
-          {
-            name: "Tiempo libre en Osaka",
-            slot: "Resto del día",
-            note: "Compras o repetir tu zona favorita.",
-            image: commonsImage("Dotonbori Area Namba Osaka Japan01s5.jpg", "Vista nocturna de Osaka para repetir zona favorita"),
-          },
-        ],
-      },
     ],
   },
   {
@@ -171,11 +165,11 @@ export const cityPlans: CityPlan[] = [
     accent: "from-[#ffd7e5] via-[#fff0c7] to-[#d9f7e8]",
     description:
       "Ritmo más contemplativo, con templos, calles históricas y un contraste muy bonito entre tradición y arte inmersivo.",
-    stay: "Días 5 al 10",
+    stay: "Días 4 al 7",
     highlights: ["Kinkaku-ji", "Arashiyama", "Fushimi Inari", "Gion"],
     days: [
       {
-        day: "Día 5",
+        day: "Día 4",
         title: "Norte de Kioto",
         vibe: "Dorado, calma y una tarde más experimental.",
         color: "#f7c948",
@@ -188,7 +182,7 @@ export const cityPlans: CityPlan[] = [
           {
             name: "TeamLab Biovortex",
             slot: "Tarde / noche",
-            note: "A partir del 7 de octubre, a 10 min caminando de Kyoto Station.",
+            note: "Abierto a partir del 7 de octubre, a 10 min caminando desde Kyoto Station.",
             image: commonsImage(
               "Photos at teamlab planets tokyo.jpg",
               "Referencia visual inmersiva estilo TeamLab",
@@ -197,7 +191,7 @@ export const cityPlans: CityPlan[] = [
         ],
       },
       {
-        day: "Día 6",
+        day: "Día 5",
         title: "Arashiyama",
         vibe: "Bosques de bambú y fotos con menos gente.",
         color: "#86d1c1",
@@ -210,13 +204,13 @@ export const cityPlans: CityPlan[] = [
           {
             name: "Adashino Nenbutsu-ji",
             slot: "Tarde",
-            note: "Zona tranquila, 500 yenes y otro bosque de bambú.",
+            note: "Fuera de Arashiyama, 500 yenes, parque de budistas y otro bosque de bambú para fotos sin tanta gente.",
             image: commonsImage("Kyoto Adashino Nenbutsu-ji 8.jpg", "Templo Adashino Nenbutsu-ji"),
           },
         ],
       },
       {
-        day: "Día 7",
+        day: "Día 6",
         title: "Sur y centro histórico",
         vibe: "Postales clásicas de Kioto durante todo el día.",
         color: "#ff9f9f",
@@ -250,7 +244,7 @@ export const cityPlans: CityPlan[] = [
         ],
       },
       {
-        day: "Día 8",
+        day: "Día 7",
         title: "Este de Kioto",
         vibe: "Ruta clásica, templos y vistas.",
         color: "#b39ddb",
@@ -311,15 +305,15 @@ export const cityPlans: CityPlan[] = [
             image: commonsImage("Shibuya crossing (12214).jpg", "Shibuya Crossing"),
           },
           {
+            name: "Senso-ji",
+            slot: "Durante el día",
+            note: "Templo Senso-ji en Asakusa.",
+            image: commonsImage("Overview of Sensoji temple.jpg", "Vista de Senso-ji en Asakusa"),
+          },
+          {
             name: "Takeshita Street",
             slot: "Tarde",
             image: commonsImage("Takeshita Street.jpg", "Takeshita Street en Harajuku"),
-          },
-          {
-            name: "Senso-ji",
-            slot: "Mañana o tarde",
-            note: "Según la ruta del día.",
-            image: commonsImage("Overview of Sensoji temple.jpg", "Vista de Senso-ji en Asakusa"),
           },
         ],
       },
@@ -330,9 +324,9 @@ export const cityPlans: CityPlan[] = [
         color: "#ffb86b",
         stops: [
           {
-            name: "Meiji Shrine",
-            slot: "Mañana",
-            image: commonsImage("Meiji-Jingu-Shrine-05.jpg", "Meiji Shrine en Tokio"),
+            name: "Tokyo Tower",
+            slot: "Durante el día / noche",
+            image: commonsImage("Tokyo Tower at night.jpg", "Tokyo Tower iluminada"),
           },
           {
             name: "TeamLab Planets",
@@ -341,9 +335,9 @@ export const cityPlans: CityPlan[] = [
             image: commonsImage("Photos at teamlab planets tokyo.jpg", "Instalación de TeamLab Planets Tokyo"),
           },
           {
-            name: "Tokyo Tower",
-            slot: "Atardecer / noche",
-            image: commonsImage("Tokyo Tower at night.jpg", "Tokyo Tower iluminada"),
+            name: "Meiji Shrine",
+            slot: "Mañana",
+            image: commonsImage("Meiji-Jingu-Shrine-05.jpg", "Meiji Shrine en Tokio"),
           },
         ],
       },
@@ -369,7 +363,7 @@ export const cityPlans: CityPlan[] = [
           {
             name: "Asakusa District",
             slot: "Mañana",
-            note: "Terminar Senso-ji si faltó.",
+            note: "Distrito tradicional de Asakusa.",
             image: commonsImage("Overview of Sensoji temple.jpg", "Asakusa y Senso-ji de noche"),
           },
           {
@@ -378,7 +372,7 @@ export const cityPlans: CityPlan[] = [
             image: commonsImage("Ueno park.jpg", "Hanami en Ueno Park"),
           },
           {
-            name: "Tokyo Skytree",
+            name: "Tokyo Skystree",
             slot: "Atardecer / noche",
             image: commonsImage("Tokyo Skytree in Japan.jpg", "Tokyo Skytree"),
           },
@@ -391,7 +385,7 @@ export const cityPlans: CityPlan[] = [
         color: "#85dcb0",
         stops: [
           {
-            name: "Odaiba Island",
+            name: "Odiaba Island",
             slot: "Mañana / tarde",
             image: commonsImage("Rainbow Bridge at Odaiba.JPG", "Rainbow Bridge y Odaiba"),
           },
@@ -441,4 +435,23 @@ export const cityPlans: CityPlan[] = [
   },
 ];
 
-export const nightlifeSpots = ["Harajuku", "Akihabara", "Shinjuku"];
+export const nightlifeSpots: NightlifeSpot[] = [
+  {
+    name: "Harajuku",
+    vibe: "Moda, calles kawaii, crepas, Cat Street y ambiente joven cerca de Takeshita.",
+    href: "https://www.gotokyo.org/en/destinations/western-tokyo/harajuku/index.html",
+    label: "Ver guía",
+  },
+  {
+    name: "Akihabara",
+    vibe: "Arcades, anime, tiendas otaku, electrónica y luces para cerrar tarde.",
+    href: "https://www.gotokyo.org/en/destinations/central-tokyo/akihabara/index.html",
+    label: "Ver guía",
+  },
+  {
+    name: "Shinjuku",
+    vibe: "Neón, callejones, bares pequeños, Kabukicho y vida nocturna más intensa.",
+    href: "https://www.gotokyo.org/en/destinations/western-tokyo/shinjuku/index.html",
+    label: "Ver guía",
+  },
+];
