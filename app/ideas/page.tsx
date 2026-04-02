@@ -40,7 +40,7 @@ export default function IdeasPage() {
                 Sample ideas
               </span>
               <h1 className="title-font mt-4 text-4xl leading-none text-[#6f446f] sm:text-5xl lg:text-7xl">
-                Ideas base
+                Ideas base Develop
                 <span className="block text-[#ff5f87]">para seguir creciendo</span>
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-[#5a435e] sm:text-lg">
