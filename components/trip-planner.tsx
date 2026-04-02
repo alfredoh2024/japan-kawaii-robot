@@ -144,7 +144,7 @@ export function TripPlanner() {
                   onClick={() => setIsFlexibleOpen((current) => !current)}
                   whileHover={{ y: -6, scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  className="relative overflow-hidden rounded-[1.75rem] border border-dashed border-[#ffc1d6] bg-white/70 px-5 py-5 text-left"
+                  className="relative overflow-hidden rounded-[1.75rem] border border-dashed border-[#ffc1d6] bg-white/70 px-5 py-5 text-left md:col-span-3"
                 >
                   <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-br from-[#e8ddff] via-[#ffdceb] to-[#fff0b8] opacity-90" />
                   <div className="relative">
